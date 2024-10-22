@@ -1,0 +1,114 @@
+/* Thiết lập mặc định cho tất cả các kích thước màn hình */
+
+.order-container {
+    padding: 20px;
+}
+
+h2 {
+    color: rgb(0, 0, 0);
+    text-align: center;
+}
+
+.order-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.order-table th,
+.order-table td {
+    border: 1px solid rgb(211, 189, 247);
+    padding: 12px 15px;
+    text-align: center;
+}
+
+.order-table th {
+    background-color: rgb(122, 91, 223);
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.order-table tbody tr:nth-child(even) {
+    background-color: #f7f7ff;
+}
+
+.order-table tbody tr:nth-child(odd) {
+    background-color: #e7e0ee;
+}
+
+.order-table tbody tr:hover {
+    background-color: #ddcff0;
+    cursor: pointer;
+}
+
+.order-table td {
+    color: #4a148c;
+}
+
+.order-table th,
+.order-table td {
+    transition: all 0.3s ease;
+}
+
+.order-table th {
+    border-bottom: 2px solid #4a148c;
+}
+
+
+/* Media queries cho các thiết bị nhỏ hơn 768px (mobile) */
+
+@media only screen and (max-width: 768px) {
+    .order-table,
+    .order-table thead,
+    .order-table tbody,
+    .order-table th,
+    .order-table td,
+    .order-table tr {
+        display: block;
+    }
+    .order-table th,
+    .order-table td {
+        padding: 5px 15px;
+    }
+    .order-table thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    .order-table td {
+        border: none;
+        position: relative;
+        padding-left: 60%;
+        text-align: left;
+    }
+    .order-table td:before {
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        transform: translateY(-50%);
+        white-space: nowrap;
+        font-weight: bold;
+        color: #4a148c;
+    }
+    /* Label cho các ô trong bảng */
+    .order-table td:nth-of-type(1):before {
+        content: "STT";
+    }
+    .order-table td:nth-of-type(2):before {
+        content: "Tên sản phẩm";
+    }
+    .order-table td:nth-of-type(3):before {
+        content: "Đơn giá";
+    }
+    .order-table td:nth-of-type(4):before {
+        content: "Số lượng";
+    }
+    .order-table td:nth-of-type(5):before {
+        content: "Giảm giá";
+    }
+    .order-table td:nth-of-type(6):before {
+        content: "Thành tiền";
+    }
+}
