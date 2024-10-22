@@ -5,7 +5,7 @@ function AppRouter() {
   return (
     <Router>
       <Routes>
-        <Route path="/:billId" element={<Home />} />
+        <Route path="/bill/:billId" element={<Home />} />
       </Routes>
     </Router>
   );
