@@ -33,9 +33,11 @@ function Home() {
 
   return (
     <div className="order-container">
-      <h2>THÔNG TIN ĐƠN HÀNG</h2>
-      <p>Mã đơn hàng: {data?.billId}</p>
-      <p>Tên cửa hàng: {data?.retailerName}</p>
+      <div className="order-info">
+        <h2>THÔNG TIN ĐƠN HÀNG</h2>
+        <p>Mã đơn hàng: <span>{data?.billId}</span></p>
+        <p>Tên cửa hàng: <span>{data?.retailerName}</span></p>
+      </div>
 
       <table className="order-table">
         <thead>
@@ -61,6 +63,11 @@ function Home() {
           ))}
         </tbody>
       </table>
+
+      <button className="modern-btn">
+        <span className="btn-text">Kiểm tra quà tặng</span>
+        <span className="gift-icon" role="img" aria-label="Gift">🎁</span>
+      </button>
     </div>
   );
 }
