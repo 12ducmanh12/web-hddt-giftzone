@@ -24,7 +24,7 @@ function Home() {
   const [data, setData] = useState<BillData | null>(null);
   const publicKey = `-----BEGIN PUBLIC KEY-----
 MIGJAoGBANIjaCGikLcafAzkqmlBF75QytBc+Cr938oK03LlEcfcSzFMlAH++yZ9iRpOqVPLzyeB4g9zH/44yO2C6NhPuxz8kl7g0q1piL7mAQLLB+ju02486xMe+/LJ7JOgAsZLUZrABiQM6WVdc7JjVPNzUAEFXIL7/VCez4I3tIkFQzKFAgMBAAE=
------END PUBLIC KEY-----`; // Thay thế bằng khóa công khai của bạn
+-----END PUBLIC KEY-----`;
 
   useEffect(() => {
     axios
@@ -42,15 +42,13 @@ MIGJAoGBANIjaCGikLcafAzkqmlBF75QytBc+Cr938oK03LlEcfcSzFMlAH++yZ9iRpOqVPLzyeB4g9z
     // Tạo khóa RSA và mã hóa billId và timestamp
     const encrypt = new JSEncrypt();
     encrypt.setPublicKey(publicKey);
-    const message = `${data?.billId}:${timestamp}`;
+    const message = `${data?.billId}_${timestamp}`;
     const encrypted = encrypt.encrypt(message);
 
-    // Tạo URL với mã hóa và timestamp
     const giftUrl = `https://zalo.me/s/1983189999337011308/receipt?hc=${encodeURIComponent(
       encrypted
     )}&timestamp=${encodeURIComponent(timestamp)}`;
 
-    // Chuyển hướng người dùng
     window.open(giftUrl, "_blank");
   };
 
