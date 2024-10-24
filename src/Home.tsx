@@ -28,7 +28,7 @@ MIGJAoGBANIjaCGikLcafAzkqmlBF75QytBc+Cr938oK03LlEcfcSzFMlAH++yZ9iRpOqVPLzyeB4g9z
 
   useEffect(() => {
     axios
-      .get(`http://180.93.182.148:5000/api/detail/${billId}`)
+      .get(`https://180.93.182.148:5000/api/detail/${billId}`)
       .then((response) => {
         setData(response.data);
       })
