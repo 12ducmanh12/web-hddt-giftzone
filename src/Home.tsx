@@ -39,7 +39,6 @@ MIGJAoGBANIjaCGikLcafAzkqmlBF75QytBc+Cr938oK03LlEcfcSzFMlAH++yZ9iRpOqVPLzyeB4g9z
 
   const handleCheckGift = () => {
     const timestamp = Date.now();
-    // Tạo khóa RSA và mã hóa billId và timestamp
     const encrypt = new JSEncrypt();
     encrypt.setPublicKey(publicKey);
     const message = `${data?.billId}_${timestamp}`;
