@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import JSEncrypt from "jsencrypt";
 
 interface Product {
-  id: number;
+  ProductId: number;
   name: string;
   unitPrice: number;
   amount: number;
@@ -77,7 +77,7 @@ MIGJAoGBANIjaCGikLcafAzkqmlBF75QytBc+Cr938oK03LlEcfcSzFMlAH++yZ9iRpOqVPLzyeB4g9z
         </thead>
         <tbody>
           {data?.products.map((product, index) => (
-            <tr key={product.id}>
+            <tr key={index}>
               <td>{index + 1}</td>
               <td>{product.name}</td>
               <td>{product.unitPrice.toLocaleString()} đ</td>
