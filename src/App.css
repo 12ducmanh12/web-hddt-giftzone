@@ -4,7 +4,8 @@
     padding: 10px;
     background-color: #f9f9f9;
     border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Bóng rộng và nhẹ */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    /* Bóng rộng và nhẹ */
 }
 
 h2 {
@@ -95,7 +96,6 @@ h2 {
     margin-left: 10px;
 }
 
-
 @keyframes gradient-animation {
     0% {
         background-position: 0% 50%;
@@ -103,14 +103,12 @@ h2 {
         background-color: #e0c3fc;
         /* Màu nhạt */
     }
-
     50% {
         background-position: 100% 50%;
         /* Đến phải */
         background-color: #7e22ce;
         /* Màu đậm */
     }
-
     100% {
         background-position: 0% 50%;
         /* Trở lại trái */
@@ -124,12 +122,10 @@ h2 {
         transform: scale(1);
         /* Kích thước ban đầu */
     }
-
     50% {
         transform: scale(1.1);
         /* Phóng to lên 10% */
     }
-
     100% {
         transform: scale(1);
         /* Trở về kích thước ban đầu */
@@ -137,20 +133,16 @@ h2 {
 }
 
 @keyframes shake {
-
     0%,
     100% {
         transform: rotate(0deg);
     }
-
     25% {
         transform: rotate(-20deg);
     }
-
     50% {
         transform: rotate(10deg);
     }
-
     75% {
         transform: rotate(-20deg);
     }
@@ -177,9 +169,33 @@ h2 {
     box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
 }
 
+.modern-export {
+    background: #8500ff;
+    background-size: 250% 250%;
+    color: white;
+    font-weight: bold;
+    padding: 15px 24px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    margin-top: 40px;
+    display: flex;
+    margin-right: 7px;
+    justify-content: center;
+    align-items: center;
+    float: right;
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
+}
+
 .btn-text {
     display: inline-block;
     animation: text-scale 4s ease infinite;
+}
+
+.btn-text-export {
+    display: inline-block;
 }
 
 .gift-icon {
@@ -203,11 +219,9 @@ h2 {
 }
 
 
-
 /* Media queries cho các thiết bị nhỏ hơn 768px (mobile) */
 
 @media only screen and (max-width: 768px) {
-
     .order-table,
     .order-table thead,
     .order-table tbody,
@@ -216,25 +230,21 @@ h2 {
     .order-table tr {
         display: block;
     }
-
     .order-table th,
     .order-table td {
         padding: 5px 15px;
     }
-
     .order-table thead tr {
         position: absolute;
         top: -9999px;
         left: -9999px;
     }
-
     .order-table td {
         border: none;
         position: relative;
         padding-left: 60%;
         text-align: left;
     }
-
     .order-table td:before {
         position: absolute;
         top: 50%;
@@ -244,28 +254,22 @@ h2 {
         font-weight: bold;
         color: #4a148c;
     }
-
     /* Label cho các ô trong bảng */
     .order-table td:nth-of-type(1):before {
         content: "STT";
     }
-
     .order-table td:nth-of-type(2):before {
         content: "Tên sản phẩm";
     }
-
     .order-table td:nth-of-type(3):before {
         content: "Đơn giá";
     }
-
     .order-table td:nth-of-type(4):before {
         content: "Số lượng";
     }
-
     .order-table td:nth-of-type(5):before {
         content: "Giảm giá";
     }
-
     .order-table td:nth-of-type(6):before {
         content: "Thành tiền";
     }
