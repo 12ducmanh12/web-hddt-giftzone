@@ -15,7 +15,7 @@ interface Product {
 
 interface BillData {
   billId: number;
-  retailerName: string;
+  storeName: string;
   products: Product[];
 }
 
@@ -57,7 +57,7 @@ MIGJAoGBANIjaCGikLcafAzkqmlBF75QytBc+Cr938oK03LlEcfcSzFMlAH++yZ9iRpOqVPLzyeB4g9z
           Mã đơn hàng: <span>{data?.billId}</span>
         </p>
         <p>
-          Tên cửa hàng: <span>{data?.retailerName}</span>
+          Tên cửa hàng: <span>{data?.storeName}</span>
         </p>
       </div>
 
