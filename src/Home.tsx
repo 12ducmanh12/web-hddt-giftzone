@@ -38,15 +38,13 @@ MIGJAoGBANIjaCGikLcafAzkqmlBF75QytBc+Cr938oK03LlEcfcSzFMlAH++yZ9iRpOqVPLzyeB4g9z
   }, [billId]);
 
   const handleCheckGift = () => {
-    const timestamp = Date.now();
+    // const timestamp = Date.now();
     const encrypt = new JSEncrypt();
     encrypt.setPublicKey(publicKey);
-    const message = `${data?.billId}_${timestamp}`;
-    const encrypted = encrypt.encrypt(message);
+    // const message = `${data?.billId}_${timestamp}`;
+    // const encrypted = encrypt.encrypt(message);
 
-    const giftUrl = `https://zalo.me/s/1983189999337011308/receipt?env=TESTING&version=42&hc=${encodeURIComponent(
-      encrypted
-    )}&timestamp=${encodeURIComponent(timestamp)}`;
+    const giftUrl = `https://zalo.me/s/1983189999337011308/receipt?env=TESTING&version=43&Billid=${data?.billId}`;
 
     window.open(giftUrl, "_blank");
   };
