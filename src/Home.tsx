@@ -92,7 +92,7 @@ MIGJAoGBANIjaCGikLcafAzkqmlBF75QytBc+Cr938oK03LlEcfcSzFMlAH++yZ9iRpOqVPLzyeB4g9z
           🎁
         </span>
       </button>
-      <button className="modern-export" onClick={handleCheckGift}>
+      <button className="modern-export">
         <span className="btn-text-export">Xuất hóa đơn</span>
       </button>
     </div>
