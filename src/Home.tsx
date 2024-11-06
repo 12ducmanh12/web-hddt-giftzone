@@ -44,9 +44,9 @@ MIGJAoGBANIjaCGikLcafAzkqmlBF75QytBc+Cr938oK03LlEcfcSzFMlAH++yZ9iRpOqVPLzyeB4g9z
     const message = `${data?.billId}_${timestamp}`;
     const encrypted = encrypt.encrypt(message);
 
-    const giftUrl = `https://zalo.me/s/1983189999337011308/?env=TESTING&version=40/receipt?hc=${encodeURIComponent(
+    const giftUrl = `https://zalo.me/s/1983189999337011308/receipt?hc=${encodeURIComponent(
       encrypted
-    )}&timestamp=${encodeURIComponent(timestamp)}`;
+    )}&timestamp=${encodeURIComponent(timestamp)}/?env=TESTING&version=40`;
 
     window.open(giftUrl, "_blank");
   };
