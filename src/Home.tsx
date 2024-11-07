@@ -3,7 +3,6 @@ import "./App.css";
 import axios from "axios";
 import { baseUrl } from "./constant/constant";
 import { useParams } from "react-router-dom";
-import JSEncrypt from "jsencrypt";
 
 interface Product {
   ProductId: number;
@@ -24,9 +23,6 @@ interface BillData {
 function Home() {
   const { billId } = useParams();
   const [data, setData] = useState<BillData | null>(null);
-  const publicKey = `-----BEGIN PUBLIC KEY-----
-MIGJAoGBANIjaCGikLcafAzkqmlBF75QytBc+Cr938oK03LlEcfcSzFMlAH++yZ9iRpOqVPLzyeB4g9zH/44yO2C6NhPuxz8kl7g0q1piL7mAQLLB+ju02486xMe+/LJ7JOgAsZLUZrABiQM6WVdc7JjVPNzUAEFXIL7/VCez4I3tIkFQzKFAgMBAAE=
------END PUBLIC KEY-----`;
 
   useEffect(() => {
     axios
@@ -40,12 +36,6 @@ MIGJAoGBANIjaCGikLcafAzkqmlBF75QytBc+Cr938oK03LlEcfcSzFMlAH++yZ9iRpOqVPLzyeB4g9z
   }, [billId]);
 
   const handleCheckGift = () => {
-    // const timestamp = Date.now();
-    const encrypt = new JSEncrypt();
-    encrypt.setPublicKey(publicKey);
-    // const message = `${data?.billId}_${timestamp}`;
-    // const encrypted = encrypt.encrypt(message);
-
     const giftUrl = `https://zalo.me/s/1983189999337011308/receipt?env=TESTING&version=45&Billid=${data?.billId}`;
 
     window.open(giftUrl, "_blank");
