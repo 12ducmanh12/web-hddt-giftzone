@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import axios from "axios";
+import { baseUrl } from "./constant/constant";
 import { useParams } from "react-router-dom";
 import JSEncrypt from "jsencrypt";
 
 interface Product {
   ProductId: number;
+  sku: string;
   name: string;
   unitPrice: number;
   amount: number;
@@ -28,7 +30,7 @@ MIGJAoGBANIjaCGikLcafAzkqmlBF75QytBc+Cr938oK03LlEcfcSzFMlAH++yZ9iRpOqVPLzyeB4g9z
 
   useEffect(() => {
     axios
-      .get(`https://vpos.giftzone.vn/api/detail/${billId}`)
+      .get(`${baseUrl}/api/detail/${billId}`)
       .then((response) => {
         setData(response.data);
       })
@@ -66,6 +68,7 @@ MIGJAoGBANIjaCGikLcafAzkqmlBF75QytBc+Cr938oK03LlEcfcSzFMlAH++yZ9iRpOqVPLzyeB4g9z
           <tr>
             <th>STT</th>
             <th>Tên sản phẩm</th>
+            <th>Sku</th>
             <th>Đơn giá</th>
             <th>Số lượng</th>
             <th>Giảm giá</th>
@@ -77,6 +80,7 @@ MIGJAoGBANIjaCGikLcafAzkqmlBF75QytBc+Cr938oK03LlEcfcSzFMlAH++yZ9iRpOqVPLzyeB4g9z
             <tr key={index}>
               <td>{index + 1}</td>
               <td>{product.name}</td>
+              <td>{product.sku}</td>
               <td>{product.unitPrice.toLocaleString()} đ</td>
               <td>{product.amount}</td>
               <td>{product.discount.toLocaleString()} đ</td>
