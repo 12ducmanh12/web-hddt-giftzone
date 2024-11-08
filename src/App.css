@@ -262,15 +262,18 @@ h2 {
         content: "Tên sản phẩm";
     }
     .order-table td:nth-of-type(3):before {
-        content: "Đơn giá";
+        content: "Sku";
     }
     .order-table td:nth-of-type(4):before {
-        content: "Số lượng";
+        content: "Đơn giá";
     }
     .order-table td:nth-of-type(5):before {
-        content: "Giảm giá";
+        content: "Số lượng";
     }
     .order-table td:nth-of-type(6):before {
+        content: "Giảm giá";
+    }
+    .order-table td:nth-of-type(7):before {
         content: "Thành tiền";
     }
 }
