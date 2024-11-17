@@ -3,7 +3,7 @@ import "./App.css";
 import axios from "axios";
 import { baseUrl } from "./constant/constant";
 import { useParams } from "react-router-dom";
-
+import CryptoJS from "crypto-js";
 interface Product {
   ProductId: number;
   sku: string;
@@ -36,6 +36,10 @@ function Home() {
   }, [billId]);
 
   const handleCheckGift = () => {
+    const decryptedBillId = CryptoJS.AES.decrypt(
+      data?.billId,
+      secretKey
+    ).toString(CryptoJS.enc.Utf8);
     const giftUrl = `https://zalo.me/s/1983189999337011308/receipt?env=TESTING&version=45&Billid=${data?.billId}`;
 
     window.open(giftUrl, "_blank");
