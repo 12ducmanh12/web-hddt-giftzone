@@ -39,9 +39,7 @@ function Home() {
 
   const handleCheckGift = () => {
     const encryptor = new JSEncrypt();
-
     encryptor.setPublicKey(secretKey);
-
     const encrypted = encryptor.encrypt(billId || "");
     console.log(encrypted);
     if (encrypted) {
