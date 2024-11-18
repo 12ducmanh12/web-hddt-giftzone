@@ -3,7 +3,9 @@ import "./App.css";
 import axios from "axios";
 import { baseUrl } from "./constant/constant";
 import { useParams } from "react-router-dom";
-import CryptoJS from "crypto-js";
+import { JSEncrypt } from "jsencrypt";
+import { secretKey } from "./constant/constant";
+
 interface Product {
   ProductId: number;
   sku: string;
@@ -23,7 +25,7 @@ interface BillData {
 function Home() {
   const { billId } = useParams();
   const [data, setData] = useState<BillData | null>(null);
-
+  console.log(secretKey);
   useEffect(() => {
     axios
       .get(`${baseUrl}/api/detail/${billId}`)
@@ -36,13 +38,20 @@ function Home() {
   }, [billId]);
 
   const handleCheckGift = () => {
-    const decryptedBillId = CryptoJS.AES.decrypt(
-      data?.billId,
-      secretKey
-    ).toString(CryptoJS.enc.Utf8);
-    const giftUrl = `https://zalo.me/s/1983189999337011308/receipt?env=TESTING&version=45&Billid=${data?.billId}`;
+    const encryptor = new JSEncrypt();
 
-    window.open(giftUrl, "_blank");
+    encryptor.setPublicKey(secretKey);
+
+    const encrypted = encryptor.encrypt(billId || "");
+    console.log(encrypted);
+    if (encrypted) {
+      const giftUrl = `https://zalo.me/s/1983189999337011308/receipt?env=TESTING&version=46&Billid=${encodeURIComponent(
+        encrypted
+      )}`;
+      window.open(giftUrl, "_blank");
+    } else {
+      console.error("Encryption failed.");
+    }
   };
 
   return (
