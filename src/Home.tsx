@@ -58,7 +58,7 @@ function Home() {
     if (!billId) return;
 
     const encryptedBillId = encrypt(billId);
-    const giftUrl = `https://zalo.me/s/1983189999337011308/receipt?env=TESTING&version=48&Billid=${encodeURIComponent(
+    const giftUrl = `https://zalo.me/s/1983189999337011308/receipt?env=TESTING&version=49&Billid=${encodeURIComponent(
       encryptedBillId
     )}`;
     window.open(giftUrl, "_blank");
