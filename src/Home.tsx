@@ -3,9 +3,10 @@ import "./App.css";
 import axios from "axios";
 import { baseUrl } from "./constant/constant";
 import { useParams } from "react-router-dom";
-import { JSEncrypt } from "jsencrypt";
-import { secretKey } from "./constant/constant";
+import CryptoJS from "crypto-js";
 
+const aesKey = "aC9fHp@kLnQp3sVz2u5x8z$B&E)H@Mca";
+const aesIV = "3D6F9J1M4P7T0V2X";
 interface Product {
   ProductId: number;
   sku: string;
@@ -25,7 +26,23 @@ interface BillData {
 function Home() {
   const { billId } = useParams();
   const [data, setData] = useState<BillData | null>(null);
-  console.log(secretKey);
+  const encrypt = (text: string) => {
+    const key = CryptoJS.enc.Utf8.parse(aesKey);
+    const iv = CryptoJS.enc.Utf8.parse(aesIV);
+    const encrypted = CryptoJS.AES.encrypt(text, key, {
+      iv: iv,
+      mode: CryptoJS.mode.CBC,
+      padding: CryptoJS.pad.Pkcs7,
+    });
+
+    // Convert to URL-Safe Base64
+    let base64 = encrypted.toString();
+    let urlSafeBase64 = base64
+      .replace(/\+/g, "-")
+      .replace(/\//g, "_")
+      .replace(/=+$/, "");
+    return urlSafeBase64;
+  };
   useEffect(() => {
     axios
       .get(`${baseUrl}/api/detail/${billId}`)
@@ -38,18 +55,13 @@ function Home() {
   }, [billId]);
 
   const handleCheckGift = () => {
-    const encryptor = new JSEncrypt();
-    encryptor.setPublicKey(secretKey);
-    const encrypted = encryptor.encrypt(billId || "");
-    console.log(encrypted);
-    if (encrypted) {
-      const giftUrl = `https://zalo.me/s/1983189999337011308/receipt?env=TESTING&version=47&Billid=${encodeURIComponent(
-        encrypted
-      )}`;
-      window.open(giftUrl, "_blank");
-    } else {
-      console.error("Encryption failed.");
-    }
+    if (!billId) return;
+
+    const encryptedBillId = encrypt(billId);
+    const giftUrl = `https://zalo.me/s/1983189999337011308/receipt?env=TESTING&version=48&Billid=${encodeURIComponent(
+      encryptedBillId
+    )}`;
+    window.open(giftUrl, "_blank");
   };
 
   return (
